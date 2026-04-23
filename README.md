@@ -1,22 +1,48 @@
 # Platemap
 
-> Your menu. Digitized. Nutrition-calculated.
-
 Photograph your handwritten menu. Get a clean digital version with calories, allergens, and QR-ready pages.
 
-## What you get
+**Status:** v0 skeleton — landing page + menu-upload demo route. No real OCR yet.
 
-- **Photo to digital menu** — Snap the menu. We OCR, clean up, and format in your brand.
-- **Auto-nutrition and allergens** — We estimate calories, grams of protein, and flag gluten, nuts, dairy. Defensible numbers.
-- **QR, Instagram, Google** — Export to every surface where a customer might find you.
+**Landing:** https://platemap.vercel.app
 
-## Category
+---
 
-Small business. Part of a 50-product exploration of high-demand consumer and SMB markets.
+## Stack
 
-## Status
+| Layer | Choice |
+|---|---|
+| Framework | Next.js 15 (App Router) |
+| Language | TypeScript (strict) |
+| Styling | Tailwind v4 |
+| Fonts | Inter via `next/font/google` |
+| Hosting | Vercel (zero config) |
+| Waitlist | https://waitlist-api-sigma.vercel.app |
 
-Landing page live with interactive demo and functional waitlist.
+## Run locally
 
-- **Live:** https://mukundakatta.github.io/platemap/
-- **Waitlist API:** https://waitlist-api-sigma.vercel.app/api/waitlist
+```bash
+pnpm install
+pnpm dev
+```
+
+Open http://localhost:3000.
+
+## Deploy
+
+Push to `main` — Vercel picks it up automatically. No environment variables required.
+
+## Routes
+
+| Route | Description |
+|---|---|
+| `/` | Landing page (original copy + design preserved) |
+| `/try` | Upload a handwritten menu photo, see 3 mocked digitized items with nutrition |
+| `/api/waitlist` | `POST { email }` → forwards to waitlist-api-sigma with `product: "platemap"` |
+
+## What's next
+
+- Wire real OCR (menu photo → structured items)
+- AI nutrition estimation per item
+- QR code generation + export
+- Auth + restaurant profile management
